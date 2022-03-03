@@ -1,8 +1,32 @@
-puts "creating 4 movies"
+puts "creating 15 fake movies"
+movies = 15.times.map do
+  Movie.create!(
+    title: Faker::Movie.title,
+    overview: Faker::Lorem.sentence(word_count: 10),
+    poster_url: "https://source.unsplash.com/random",
+    rating: rand(0..10.0)
+  )
+rescue
+  retry
+end
+puts "done!"
 
-Movie.create(title: "Wonder Woman 1984", overview: "Wonder Woman comes into conflict with the Soviet Union during the Cold War in the 1980s", poster_url: "https://image.tmdb.org/t/p/original/8UlWHLMpgZm9bx6QYh0NFoq67TZ.jpg", rating: 6.9)
-Movie.create(title: "The Shawshank Redemption", overview: "Framed in the 1940s for double murder, upstanding banker Andy Dufresne begins a new life at the Shawshank prison", poster_url: "https://image.tmdb.org/t/p/original/q6y0Go1tsGEsmtFryDOJo3dEmqu.jpg", rating: 8.7)
-Movie.create(title: "Titanic", overview: "101-year-old Rose DeWitt Bukater tells the story of her life aboard the Titanic.", poster_url: "https://image.tmdb.org/t/p/original/9xjZS2rlVxm8SFx8kPC3aIGCOYQ.jpg", rating: 7.9)
-Movie.create(title: "Ocean's Eight", overview: "Debbie Ocean, a criminal mastermind, gathers a crew of female thieves to pull off the heist of the century.", poster_url: "https://image.tmdb.org/t/p/original/MvYpKlpFukTivnlBhizGbkAe3v.jpg", rating: 7.0)
+puts "creating lists"
+genres = %w[mystery horror romance comedy fantasy]
+lists = genres.map do |genre|
+  List.create!(
+    name: genre
+  )
+end
+puts "done!"
 
+puts "creating 30 bookmarks"
+10.times do
+  bookmark = Bookmark.new(
+    comment: Faker::Lorem.sentence(word_count: rand(2..5)),
+    movie: movies.sample,
+    list: lists.sample
+  )
+  bookmark.save!
+end
 puts "done!"

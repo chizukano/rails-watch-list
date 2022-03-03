@@ -1,5 +1,5 @@
 class Bookmark < ApplicationRecord
-  belongs_to :movie
+  has_and_belongs_to_many :movie
   belongs_to :list
 
   validates :comment, length: { minimum: 6 }

@@ -1,12 +1,13 @@
 <div class="container">
-<h1>All the moviews</h1>
+<h1>All the lists</h1>
 <hr>
 
 <ul class=list-unstyled>
-  <% @movies.each do |movie| %>
-  <li><%= movie.title %></li>
-  <li><%= movie.overview %></li>
+  <% @lists.each do |list| %>
+  <li><%= link_to list.name, list_path(list) %></li>
   <hr>
   <% end %>
 </ul>
+
+<%= link_to "create a new list", new_list_path %>
 </div>
