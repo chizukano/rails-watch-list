@@ -1,0 +1,12 @@
+<div class="container">
+<h1>All the moviews</h1>
+<hr>
+
+<ul class=list-unstyled>
+  <% @movies.each do |movie| %>
+  <li><%= movie.title %></li>
+  <li><%= movie.overview %></li>
+  <hr>
+  <% end %>
+</ul>
+</div>
