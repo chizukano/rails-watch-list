@@ -6,6 +6,7 @@ ruby '3.0.3'
 gem "autoprefixer-rails", "10.2.5"
 
 # front-end gems / faker
+gem 'unsplash'
 gem "font-awesome-sass", "~> 5.15"
 gem "simple_form"
 gem 'faker'
