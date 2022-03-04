@@ -1,32 +1,7 @@
-puts "creating 15 fake movies"
-movies = 15.times.map do
-  Movie.create!(
-    title: Faker::Movie.title,
-    overview: Faker::Lorem.sentence(word_count: 10),
-    poster_url: "https://source.unsplash.com/random",
-    rating: rand(0..10.0)
-  )
-rescue
-  retry
-end
-puts "done!"
-
-puts "creating lists"
-genres = %w[mystery horror romance comedy fantasy]
-lists = genres.map do |genre|
-  List.create!(
-    name: genre
-  )
-end
-puts "done!"
-
-puts "creating 30 bookmarks"
-10.times do
-  bookmark = Bookmark.new(
-    comment: Faker::Lorem.sentence(word_count: rand(2..5)),
-    movie: movies.sample,
-    list: lists.sample
-  )
-  bookmark.save!
-end
-puts "done!"
+# This file should contain all the record creation needed to seed the database with its default values.
+# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
+#
+# Examples:
+#
+#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
+#   Character.create(name: 'Luke', movie: movies.first)
