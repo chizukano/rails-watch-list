@@ -1,13 +1,25 @@
-<div class="container">
-<h1>All the lists</h1>
-<hr>
 
-<ul class=list-unstyled>
-  <% @lists.each do |list| %>
-  <li><%= link_to list.name, list_path(list) %></li>
-  <hr>
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= image_path "film.jpeg"%>);">
+  <h1>Movie lists</h1>
+  <p>Let's create your own movie lists</p>
+</div>
+<br>
+<div class="bg-white m-3 p-3">
+<h3>Movie categories:</h3>
+  <div class="d-flex row">
+    <% @lists.each do |list| %>
+      <div class="cards">
+        <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
+          <%= link_to list.name, list_path(list) %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+<div class="bg-white m-3 p-3">
+<h4 class="h5">Add a new list</h4>
+  <%= simple_form_for @list do |f| %>
+  <%= f.input :name %>
+  <%= f.submit "Add a list", class:"mt-3" %>
   <% end %>
-</ul>
-
-<%= link_to "create a new list", new_list_path %>
 </div>

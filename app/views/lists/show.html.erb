@@ -1,5 +1,26 @@
 <div class="container">
-<h1>All <%= @list.name %> movies</h1>
-<hr>
+  <h1>All <%= @list.name %> movies</h1>
+  <hr>
 
-<p><%= link_to "Back", lists_path %></p>
+
+    <% @list.movies.each do |movie| %>
+      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= image_path movie.poster_url %>)">
+       <%= movie.title %>
+      </div>
+    <% end %>
+  <hr>
+
+  <h2>Related bookmarks:</h2>
+  <ul class=list-unstyled>
+    <% @list.bookmarks.each do |bookmark| %>
+      <li><%= bookmark.comment %></li>
+      <li><%= link_to "Delete", bookmark_path(bookmark), method: :delete, data: { confirm: "Delete this bookmark?"} %></li>
+    <% end %>
+    <hr>
+  </ul>
+
+<br>
+
+  <%= link_to "Add a bookmark", new_list_bookmark_path(@list) %>
+  <p><%= link_to "Back", lists_path %></p>
+</div>
